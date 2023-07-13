@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { ethers } from "ethers";
+import React from "react";
+// import { ethers } from "ethers";
 
 const Form = ({ contract }) => {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+  // const [name, setName] = useState("");
+  // const [message, setMessage] = useState("");
 
-  const buy = async (event) => {
-    event.preventDefault();
-    const amount = { value: ethers.utils.parseEther("0.001") };
-    const transaction = await contract.buy(name, message, amount);
-    await transaction.wait();
-    console.log("Transaction has been completed!!!");
-    setName("");
-    setMessage("");
-  };
+  // const buy = async (event) => {
+  //   event.preventDefault();
+  //   const amount = { value: ethers.utils.parseEther("0.001") };
+  //   const transaction = await contract.buy(name, message, amount);
+  //   await transaction.wait();
+  //   console.log("Transaction has been completed!!!");
+  //   setName("");
+  //   setMessage("");
+  // };
 
   return (
     <div>Form</div>

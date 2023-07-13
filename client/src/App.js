@@ -1,44 +1,44 @@
-import { useState, useEffect } from "react";
-import { ethers } from "ethers";
+// import { useState, useEffect } from "react";
+// import { ethers } from "ethers";
 
-import ABI from "./abi/BuyMeCoffee.json";
-import Buy from "./components/Form";
-import Messages from "./pages/Messages";
+// import ABI from "./abi/BuyMeCoffee.json";
+// import Buy from "./components/Form";
+// import Messages from "./pages/Messages";
 import Header from "./components/Header";
 
 const App = () => {
-  const [provider, setProvider] = useState(null);
-  const [signer, setSigner] = useState(null);
-  const [contract, setContract] = useState(null);
+  // const [provider, setProvider] = useState(null);
+  // const [signer, setSigner] = useState(null);
+  // const [contract, setContract] = useState(null);
 
-  useEffect(() => {
-    const connectWallet = async () => {
-      const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
-      const contractAbi = ABI.abi;
+  // useEffect(() => {
+  //   const connectWallet = async () => {
+  //     const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
+  //     const contractAbi = ABI.abi;
 
-      try {
-        const { ethereum } = window;
-        if (ethereum) {
-          const accounts = await ethereum.request({
-            method: "eth_requestAccounts",
-          });
-        }
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(
-          contractAddress,
-          contractAbi,
-          signer
-        );
-        setProvider(provider);
-        setSigner(signer);
-        setContract(contract);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    connectWallet();
-  }, []);
+  //     try {
+  //       const { ethereum } = window;
+  //       if (ethereum) {
+  //         const accounts = await ethereum.request({
+  //           method: "eth_requestAccounts",
+  //         });
+  //       }
+  //       const provider = new ethers.providers.Web3Provider(ethereum);
+  //       const signer = provider.getSigner();
+  //       const contract = new ethers.Contract(
+  //         contractAddress,
+  //         contractAbi,
+  //         signer
+  //       );
+  //       setProvider(provider);
+  //       setSigner(signer);
+  //       setContract(contract);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   connectWallet();
+  // }, []);
 
   return (
     <div>
