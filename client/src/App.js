@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { useState, useEffect } from "react";
+import { ethers } from "ethers";
 
-import ABI from './abi/BuyMeCoffee.json';
-import './App.css';
-import Header from './components/header/header';
-import Buy from './components/buy/buy';
-import Messages from './components/messages/messages';
+import ABI from "./abi/BuyMeCoffee.json";
+import Header from "./components/Header";
+import Buy from "./components/Form";
+import Messages from "./pages/Messages";
 
 const App = () => {
   const [provider, setProvider] = useState(null);
@@ -20,35 +19,44 @@ const App = () => {
       try {
         const { ethereum } = window;
         if (ethereum) {
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          const accounts = await ethereum.request({
+            method: "eth_requestAccounts",
+          });
         }
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, contractAbi, signer);
+        const contract = new ethers.Contract(
+          contractAddress,
+          contractAbi,
+          signer
+        );
         setProvider(provider);
         setSigner(signer);
         setContract(contract);
-
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     connectWallet();
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <Header />
-      <div className='App_connection'>
-        {/* <span>Metamask Not Connected</span> */}
-        <span>Connected::0x80Ef335636B4CAece7daa1bBC849A8177C263E24</span>
-      </div>
-      <div className='App_main'>
-        <Buy />
-        <Messages />
-      </div>
     </div>
   );
-}
+};
 
 export default App;
+
+// <div className="App">
+//   <Header />
+//   <div className="App_connection">
+//     {/* <span>Metamask Not Connected</span> */}
+//     <span>Connected::0x80Ef335636B4CAece7daa1bBC849A8177C263E24</span>
+//   </div>
+//   <div className="App_main">
+//     <Buy contract={contract} />
+//     <Messages contract={contract} />
+//   </div>
+// </div>
