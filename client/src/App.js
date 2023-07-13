@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
 import ABI from "./abi/BuyMeCoffee.json";
-import Header from "./components/Header";
 import Buy from "./components/Form";
 import Messages from "./pages/Messages";
+import Header from "./components/Header";
 
 const App = () => {
   const [provider, setProvider] = useState(null);

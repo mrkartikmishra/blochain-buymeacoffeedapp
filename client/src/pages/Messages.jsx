@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Messages = ({ contract }) => {
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    const getMessages = async () => {
-      const response = await contract.getMemos();
-      setMessages(response);
-    };
-    contract && getMessages();
-  }, [contract]);
+  // useEffect(() => {
+  //   const getMessages = async () => {
+  //     const response = await contract.getMemos();
+  //     setMessages(response);
+  //   };
+  //   contract && getMessages();
+  // }, [contract]);
   return (
     <div>
       <h3>Messages</h3>
