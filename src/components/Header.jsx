@@ -11,9 +11,9 @@ const Header = () => {
         className="h-[40px] cursor-pointer"
       />
       <div className="flex items-center justify-between gap-4">
-        <a href="#" className="font-semibold cursor-pointer font-poppins">
+        <button className="font-semibold cursor-pointer font-poppins">
           Donations
-        </a>
+        </button>
         <button className="px-4 bg-orange-500 py-2 rounded-md text-white font-poppins hover:bg-orange-600">
           Connect
         </button>
