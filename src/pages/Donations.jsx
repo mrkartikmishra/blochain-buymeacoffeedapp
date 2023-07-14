@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import Identicon from "react-identicons";
+import { GrStatusWarning } from "react-icons/gr";
 import { getDonations, isWalletConnected } from "../utils/utils";
 import { useGlobalState } from "../statemanagement";
 import { useState } from "react";
@@ -10,6 +11,8 @@ const Donations = () => {
   const [loading, setLoading] = useState(false);
   const [currentAccount] = useGlobalState("currentAccount");
   const [donations] = useGlobalState("donations");
+
+  const { ethereum } = window;
 
   useEffect(() => {
     async function isConnected() {
@@ -26,6 +29,20 @@ const Donations = () => {
     }
     if (currentAccount) getDonationsList();
   }, [currentAccount]);
+
+  if (!window.ethereum) {
+    return (
+      <div className="text-center bg-orange-400 p-4 rounded-md">
+        <div className="flex items-center justify-center gap-2">
+          <GrStatusWarning size={40} />
+          <h3 className="font-poppins text-lg text-white">
+            Metamask not detected. Please install and continue using this
+            appliaction!!
+          </h3>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-10 px-4 min-h-screen">
