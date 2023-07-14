@@ -30,7 +30,7 @@ const Donations = () => {
     if (currentAccount) getDonationsList();
   }, [currentAccount]);
 
-  if (!window.ethereum) {
+  if (!ethereum) {
     return (
       <div className="text-center bg-orange-400 p-4 rounded-md">
         <div className="flex items-center justify-center gap-2">
