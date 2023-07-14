@@ -1,189 +1,86 @@
 import React from "react";
+import { useEffect } from "react";
 import Identicon from "react-identicons";
+import { getDonations, isWalletConnected } from "../utils/utils";
+import { useGlobalState } from "../statemanagement";
+import { useState } from "react";
+import Loader from "../components/Loader";
 
 const Donations = () => {
+  const [loading, setLoading] = useState(false);
+  const [currentAccount] = useGlobalState("currentAccount");
+  const [donations] = useGlobalState("donations");
+
+  useEffect(() => {
+    async function isConnected() {
+      await isWalletConnected();
+    }
+    isConnected();
+  }, []);
+
+  useEffect(() => {
+    async function getDonationsList() {
+      setLoading(true);
+      await getDonations();
+      setLoading(false);
+    }
+    if (currentAccount) getDonationsList();
+  }, [currentAccount]);
+
   return (
-    <div className="py-10 px-4">
+    <div className="py-10 px-4 min-h-screen">
       <div className="mb-2">
         <h3 className="font-poppins font-bold tracking-widest uppercase">
           Donations
         </h3>
       </div>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-screen overflow-y-auto">
-        <table class="w-full text-sm text-left text-blue-100">
-          <thead class="text-xs text-white uppercase bg-orange-400 dark:text-white">
-            <tr>
-              <th scope="col" class="px-6 py-3 text-center">
-                Name
-              </th>
-              <th scope="col" class="px-6 py-3 text-center">
-                Message
-              </th>
-              <th scope="col" class="px-6 py-3 text-center">
-                Timestamp
-              </th>
-              <th scope="col" class="px-6 py-3 text-center">
-                Address
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td
-                class="px-6 py-4 text-center  flex items-center justify-start gap-2"
-                gap-2
-              >
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4 text-center  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-            <tr class="bg-gray-200 text-black border-b border-gray-300  hover:scale-y-110">
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">Silver</td>
-              <td class="px-6 py-4 text-center">
-                Lorem Ipsum is simply typesetting industry. standard dummy text
-                ever since the 1500s
-              </td>
-              <td class="px-6 py-4  flex items-center justify-start gap-2">
-                <Identicon
-                  string={"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-                  size={15}
-                />
-                {"0x6C6c2E54BD2352Cf32761B2f042663dDE2cc2F23"}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg h-screen overflow-y-auto">
+          <table className="w-full text-sm text-left text-blue-100">
+            <thead className="text-xs text-white uppercase bg-orange-400 dark:text-white">
+              <tr>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Name
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Message
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Timestamp
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Address
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {donations?.map((donation) => {
+                return (
+                  <tr className="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110">
+                    <td className="px-6 py-4 text-center">{donation?.name}</td>
+                    <td className="px-6 py-4 text-center">
+                      {donation?.message}
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      {donation?.timestamp}
+                    </td>
+                    <td className="py-4 text-center flex justify-center items-center gap-3">
+                      <Identicon
+                        className="inline"
+                        string={donation?.donar}
+                        size={15}
+                      />
+                      <span>{donation?.donar}</span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

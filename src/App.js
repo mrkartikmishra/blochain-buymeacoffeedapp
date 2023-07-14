@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Donations from "./pages/Donations";
 import Home from "./pages/Home";
+import { useEffect } from "react";
+import { isWalletConnected } from "./utils/utils";
 
 const App = () => {
   // const [provider, setProvider] = useState(null);
@@ -43,6 +45,13 @@ const App = () => {
   //   };
   //   connectWallet();
   // }, []);
+
+  useEffect(() => {
+    async function isConnected() {
+      await isWalletConnected();
+    }
+    isConnected();
+  }, []);
 
   return (
     <div>

@@ -1,7 +1,10 @@
 import React from "react";
-import { setGlobalState } from "../statemanagement";
+import { setGlobalState, useGlobalState } from "../statemanagement";
+import { connectWallet } from "../utils/utils";
 
 const Hero = () => {
+  const [currentAccount] = useGlobalState("currentAccount");
+
   const onOpenDonateModalHandler = () => {
     setGlobalState("buy", "scale-100");
   };
@@ -22,15 +25,21 @@ const Hero = () => {
           content.
         </p>
         <div className="flex flex-col gap-2 py-3">
-          {/* <button className="px-6 md:px-6 bg-orange-500 py-[2px] rounded-md text-white font-poppins hover:bg-orange-600 w-[50%] sm:w-[30%] md:w-[40%] lg:w-[30%]">
-            Connect
-          </button> */}
-          <button
-            onClick={onOpenDonateModalHandler}
-            className="px-6 md:px-6 bg-orange-500 py-[2px] rounded-md text-white font-poppins hover:bg-orange-600 w-[50%] sm:w-[30%] md:w-[40%] lg:w-[30%]"
-          >
-            Donate
-          </button>
+          {currentAccount ? (
+            <button
+              onClick={onOpenDonateModalHandler}
+              className="px-6 md:px-6 bg-orange-500 py-[2px] rounded-md text-white font-poppins hover:bg-orange-600 w-[50%] sm:w-[30%] md:w-[40%] lg:w-[30%]"
+            >
+              Donate
+            </button>
+          ) : (
+            <button
+              onClick={connectWallet}
+              className="px-6 md:px-6 bg-orange-500 py-[2px] rounded-md text-white font-poppins hover:bg-orange-600 w-[50%] sm:w-[30%] md:w-[40%] lg:w-[30%]"
+            >
+              Connect
+            </button>
+          )}
           <p className="text-xs text-gray-500">Takes less than a minute</p>
         </div>
       </div>

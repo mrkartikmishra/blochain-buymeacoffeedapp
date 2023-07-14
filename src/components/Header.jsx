@@ -2,9 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
+import { connectWallet, truncateAddress } from "../utils/utils";
+import { useGlobalState } from "../statemanagement";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [currentAccount] = useGlobalState("currentAccount");
+
   return (
     <div className="flex items-center justify-between w-full px-4 py-3 shadow-lg shadow-slate-800 z-50">
       <Link to={"/"}>
@@ -36,8 +40,11 @@ const Header = () => {
             </Link>
           )}
         </div>
-        <button className="px-2 sm:px-3 md:px-4 bg-orange-500 py-[5px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
-          Connect
+        <button
+          onClick={connectWallet}
+          className="px-2 sm:px-3 md:px-4 bg-orange-500 py-[5px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600"
+        >
+          {currentAccount ? truncateAddress(currentAccount) : "Connect"}
         </button>
       </div>
     </div>
