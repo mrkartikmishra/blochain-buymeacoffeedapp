@@ -5,7 +5,7 @@ import { PiFacebookLogoBold } from "react-icons/pi";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-1 pt-10 mb-2 bg-gray-100 border-t-2">
+    <div className="flex flex-col items-center justify-center gap-1 pt-10 pb-2 bg-gray-100 border-t-2">
       <div>
         <span className="font-poppins text-gray-500">
           &copy; 2023 Buy me Coffee
