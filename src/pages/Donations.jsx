@@ -77,31 +77,35 @@ const Donations = () => {
               </tr>
             </thead>
             <tbody>
-              {donations?.map((donation) => {
-                return (
-                  <tr className="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110">
-                    <td className="px-6 py-4 text-center">{donation?.name}</td>
-                    <td className="px-6 py-4 text-center">
-                      {donation?.message}
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <FaEthereum className="text-orange-400 inline-block" />{" "}
-                      <span className="text-orange-400">0.01</span>
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      {donation?.timestamp}
-                    </td>
-                    <td className="py-4 text-center flex justify-center items-center gap-3">
-                      <Identicon
-                        className="inline"
-                        string={donation?.donar}
-                        size={15}
-                      />
-                      <span>{donation?.donar}</span>
-                    </td>
-                  </tr>
-                );
-              })}
+              {donations
+                ?.sort((a, b) => b?.timestamp - a?.timestamp)
+                ?.map((donation) => {
+                  return (
+                    <tr className="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110">
+                      <td className="px-6 py-4 text-center">
+                        {donation?.name}
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        {donation?.message}
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <FaEthereum className="text-orange-400 inline-block" />{" "}
+                        <span className="text-orange-400">0.01</span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        {donation?.timestamp}
+                      </td>
+                      <td className="py-4 text-center flex justify-center items-center gap-3">
+                        <Identicon
+                          className="inline"
+                          string={donation?.donar}
+                          size={15}
+                        />
+                        <span>{donation?.donar}</span>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
