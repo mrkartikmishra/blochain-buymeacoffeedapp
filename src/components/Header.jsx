@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   return (
-    <div className="flex items-center justify-between w-full px-4 py-3 shadow-lg shadow-slate-800">
+    <div className="flex items-center justify-between w-full px-4 py-3 shadow-lg shadow-slate-800 z-50">
       <img
         src="/assets/bmc-logo.svg"
         alt="logo"

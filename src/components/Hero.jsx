@@ -2,15 +2,15 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:gap-32 py-20 md:px-5 leading-10">
+    <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:gap-32 py-20 md:px-5 leading-10 bg-gray-100">
       <img
         src="/assets/bmc-icon-1.svg"
         alt="mbc hero icon"
         className="w-[100px] sm:w-[200px] sm:h-[300px]"
       />
       <div className="p-10">
-        <h2 className="text-2xl sm:text-3xl font-bold font-poppins tracking-wider sm:tracking-widest">
-          Get the support your <br /> work deserves
+        <h2 className="text-2xl sm:text-3xl font-bold font-poppins tracking-wider sm:tracking-wider">
+          Support my work, one coffee <br /> at a time.
         </h2>
         <p className="text-gray-900 font-poppins leading-8 sm:leading-8 md:leading-10">
           The best for creators to accepts donations and share exclusive
