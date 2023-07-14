@@ -4,7 +4,7 @@
 // import ABI from "./abi/BuyMeCoffee.json";
 // import Buy from "./components/Form";
 // import Messages from "./pages/Messages";
-import Header from "./components/Header";
+import Home from "./pages/Home";
 
 const App = () => {
   // const [provider, setProvider] = useState(null);
@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Home />
     </div>
   );
 };

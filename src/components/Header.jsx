@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { AiOutlineDown } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -9,16 +9,14 @@ const Header = () => {
       <img
         src="/assets/bmc-logo.svg"
         alt="logo"
-        width={200}
-        height={50}
-        className="h-[40px] cursor-pointer"
+        className="h-[35px] w-[140px] cursor-pointer"
       />
       <div className="flex items-center justify-between gap-3">
         <button className="hidden md:block font-semibold text-orange-600 cursor-pointer font-poppins">
           Donations
         </button>
         <div className="relative md:hidden">
-          <AiOutlineDown
+          <IoIosArrowDown
             size={20}
             className="cursor-pointer"
             onClick={() => setIsDropdownVisible(!isDropdownVisible)}
@@ -29,7 +27,7 @@ const Header = () => {
             </button>
           )}
         </div>
-        <button className="px-2 md:px-4 bg-orange-500 py-1 md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
+        <button className="px-2 md:px-4 bg-orange-500 py-[2px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
           Connect
         </button>
       </div>
