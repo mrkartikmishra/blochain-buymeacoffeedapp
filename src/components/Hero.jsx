@@ -5,6 +5,7 @@ const Hero = () => {
     <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:gap-32 py-20 md:px-5 leading-10">
       <img
         src="/assets/bmc-icon-1.svg"
+        alt="mbc hero icon"
         className="w-[100px] sm:w-[200px] sm:h-[300px]"
       />
       <div className="p-10">
