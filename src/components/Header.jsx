@@ -27,7 +27,7 @@ const Header = () => {
             </button>
           )}
         </div>
-        <button className="px-2 md:px-4 bg-orange-500 py-[2px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
+        <button className="px-2 md:px-4 bg-orange-500 py-[3px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
           Connect
         </button>
       </div>
