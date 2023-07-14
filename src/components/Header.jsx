@@ -28,9 +28,12 @@ const Header = () => {
             onClick={() => setIsDropdownVisible(!isDropdownVisible)}
           />
           {isDropdownVisible && (
-            <button className="font-semibold cursor-pointer font-poppins text-orange-500 bg-gray-300 px-4 py-1 rounded-md absolute -left-28 top-6">
+            <Link
+              to="/donations"
+              className="font-semibold cursor-pointer font-poppins text-orange-500 bg-gray-300 px-4 py-1 rounded-md absolute -left-28 top-6"
+            >
               Donations
-            </button>
+            </Link>
           )}
         </div>
         <button className="px-2 sm:px-3 md:px-4 bg-orange-500 py-[5px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
