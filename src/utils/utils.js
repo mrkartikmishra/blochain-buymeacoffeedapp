@@ -61,8 +61,6 @@ export const getDonations = async () => {
   const contract = await getEthereumContract();
   const donations = await contract.getMemos();
 
-  console.log("donations==>>", donations);
-
   setGlobalState("donations", structureDonationsData(donations));
 };
 
