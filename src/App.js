@@ -1,9 +1,13 @@
 // import { useState, useEffect } from "react";
 // import { ethers } from "ethers";
+import { Route, Routes } from "react-router-dom";
 
 // import ABI from "./abi/BuyMeCoffee.json";
 // import Buy from "./components/Form";
 // import Messages from "./pages/Messages";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Donations from "./pages/Donations";
 import Home from "./pages/Home";
 
 const App = () => {
@@ -42,7 +46,12 @@ const App = () => {
 
   return (
     <div>
-      <Home />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/donations" element={<Donations />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };

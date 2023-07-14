@@ -1,20 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   return (
     <div className="flex items-center justify-between w-full px-4 py-3 shadow-lg shadow-slate-800 z-50">
-      <img
-        src="/assets/bmc-logo.svg"
-        alt="logo"
-        className="h-[35px] w-[140px] cursor-pointer"
-      />
-      <div className="flex items-center justify-between gap-3">
-        <button className="hidden md:block font-semibold text-orange-600 cursor-pointer font-poppins">
+      <Link to={"/"}>
+        <img
+          src="/assets/bmc-logo.svg"
+          alt="logo"
+          className="h-[35px] w-[140px] cursor-pointer"
+        />
+      </Link>
+      <div className="flex items-center justify-between gap-2">
+        <Link
+          to="/donations"
+          className="hidden md:block font-semibold text-orange-600 cursor-pointer font-poppins hover:text-orange-700"
+        >
           Donations
-        </button>
+        </Link>
         <div className="relative md:hidden">
           <IoIosArrowDown
             size={20}
@@ -27,7 +33,7 @@ const Header = () => {
             </button>
           )}
         </div>
-        <button className="px-2 md:px-4 bg-orange-500 py-[5px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
+        <button className="px-2 sm:px-3 md:px-4 bg-orange-500 py-[5px] md:py-2 rounded-md text-white font-poppins hover:bg-orange-600">
           Connect
         </button>
       </div>

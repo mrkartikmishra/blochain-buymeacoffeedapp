@@ -1,20 +1,16 @@
 import React from "react";
-import Header from "../components/Header";
-// import Hero from "../components/Hero";
-// import Tagline from "../components/Tagline";
-import Footer from "../components/Footer";
+import Hero from "../components/Hero";
+import Tagline from "../components/Tagline";
 import Form from "../components/Form";
-import Donations from "./Donations";
+// import Loader from "../components/Loader";
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      {/* <Hero />
-      <Tagline /> */}
-      <Donations />
-      <Footer />
+      <Hero />
+      <Tagline />
       <Form />
+      {/* <Loader /> */}
     </div>
   );
 };
