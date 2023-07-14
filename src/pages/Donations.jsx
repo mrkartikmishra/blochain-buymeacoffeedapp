@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import Identicon from "react-identicons";
+import { FaEthereum } from "react-icons/fa";
 import { GrStatusWarning } from "react-icons/gr";
 import { getDonations, isWalletConnected } from "../utils/utils";
 import { useGlobalState } from "../statemanagement";
@@ -65,6 +66,9 @@ const Donations = () => {
                   Message
                 </th>
                 <th scope="col" className="px-6 py-3 text-center">
+                  Amount
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
                   Timestamp
                 </th>
                 <th scope="col" className="px-6 py-3 text-center">
@@ -79,6 +83,10 @@ const Donations = () => {
                     <td className="px-6 py-4 text-center">{donation?.name}</td>
                     <td className="px-6 py-4 text-center">
                       {donation?.message}
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <FaEthereum className="text-orange-400 inline-block" />{" "}
+                      <span className="text-orange-400">0.01</span>
                     </td>
                     <td className="px-6 py-4 text-center">
                       {donation?.timestamp}
