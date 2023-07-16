@@ -18,7 +18,7 @@ const Form = () => {
 
   const onSubmitDonateHandler = async (event) => {
     event.preventDefault();
-    const amount = { value: ethers.utils.parseEther("0.001") };
+    const amount = { value: ethers.utils.parseEther("0.01") };
     const contract = getEthereumContract();
     const transaction = await contract.buy(name, message, amount);
     setLoading(true);
