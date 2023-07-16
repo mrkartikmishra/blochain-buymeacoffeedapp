@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { setGlobalState, useGlobalState } from "../statemanagement";
 import { useNavigate } from "react-router-dom";
 import { FaEthereum } from "react-icons/fa";
-import { setGlobalState, useGlobalState } from "../statemanagement";
-import { useState } from "react";
+import { toast } from "react-toastify";
 import { ethers } from "ethers";
-import { getEthereumContract } from "../utils/utils";
 import Loader from "./Loader";
+import "react-toastify/dist/ReactToastify.css";
+import { getEthereumContract } from "../utils/utils";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -22,11 +23,20 @@ const Form = () => {
     const transaction = await contract.buy(name, message, amount);
     setLoading(true);
     await transaction.wait();
-    console.log("Transaction has been completed!!!");
     setLoading(false);
     setName("");
     setMessage("");
     setGlobalState("buy", "scale-0");
+    toast.success("Transaction has been completed successfully!!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     navigate("/donations");
   };
 
@@ -79,32 +89,6 @@ const Form = () => {
         </div>
       )}
     </div>
-    // <div className='buy'>
-    //     <Form onSubmit={buy}>
-    //         <Form.Group className="mb-3" controlId="name">
-    //             <Form.Label>Name</Form.Label>
-    //             <Form.Control
-    //                 type="text"
-    //                 placeholder="Enter name"
-    //                 value={name}
-    //                 onChange={(event) => setName(event.target.value)}
-    //             />
-    //         </Form.Group>
-
-    //         <Form.Group className="mb-3" controlId="message">
-    //             <Form.Label>Message</Form.Label>
-    //             <Form.Control
-    //                 type="text"
-    //                 placeholder="Enter message"
-    //                 value={message}
-    //                 onChange={(event) => setMessage(event.target.value)}
-    //             />
-    //         </Form.Group>
-    //         <Button variant="primary" type="submit">
-    //             Buy
-    //         </Button>
-    //     </Form>
-    // </div>
   );
 };
 

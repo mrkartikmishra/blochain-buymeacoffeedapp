@@ -81,7 +81,10 @@ const Donations = () => {
                 ?.sort((a, b) => b?.timestamp - a?.timestamp)
                 ?.map((donation) => {
                   return (
-                    <tr className="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110">
+                    <tr
+                      key={donations?.timestamp}
+                      className="bg-gray-200 text-black border-b border-gray-300 hover:scale-y-110"
+                    >
                       <td className="px-6 py-4 text-center">
                         {donation?.name}
                       </td>
